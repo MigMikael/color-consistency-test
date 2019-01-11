@@ -6,8 +6,10 @@ from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 import plotly.graph_objs as go
 from random import randint
 
-image_path = "./S8_image/"
-title = "S8 color consistency test"
+device = "S8"
+image_path = "./" + device +"_image/"
+title = device + " color consistency"
+random_color = False
 
 choose_img_path = image_path
 count = 0
@@ -58,9 +60,36 @@ for item in pixel_list:
     b.append(item[2])
 
 
-colors = []
-for i in range(count):
-    colors.append('#%06X' % randint(0, 0xFFFFFF))
+if random_color:
+    for i in range(count):
+        colors.append('#%06X' % randint(0, 0xFFFFFF))
+else:
+    colors = [
+        "rgb(115, 82, 69)",
+        "rgb(204, 161, 141)",
+        "rgb(101, 134, 179)",
+        "rgb(89, 109, 61)",
+        "rgb(141, 137, 194)",
+        "rgb(132, 228, 208)",
+        "rgb(249, 118, 35)",
+        "rgb(80, 91, 182)",
+        "rgb(222, 91, 125)",
+        "rgb(91, 63, 123)",
+        "rgb(173, 232, 91)",
+        "rgb(255, 164, 26)",
+        "rgb(44, 56, 142)",
+        "rgb(74, 148, 81)",  
+        "rgb(179, 42, 50)",
+        "rgb(250, 226, 21)",
+        "rgb(191, 81, 160)",
+        "rgb(6, 142, 172)",
+        "rgb(252, 252, 252)",
+        "rgb(230, 230, 230)",
+        "rgb(200, 200, 200)",
+        "rgb(143, 143, 142)",
+        "rgb(100, 100, 100)",
+        "rgb(50, 50, 50)",
+    ]
 
 colors *= 24
 print(len(colors))
@@ -69,7 +98,7 @@ trace = go.Scatter3d(
     x=r, y=g, z=b,
     mode='markers',
     marker=dict(
-        size=4,
+        size=5,
         color=colors
     )
 )
@@ -118,7 +147,7 @@ layout = go.Layout(
     )
 )
 
-filename = "graph.png"
+filename = device + "_color_consistency_graph.png"
 data = [trace]
 fig = go.Figure(data=data, layout=layout)
 plotly.offline.plot(fig, filename=filename)
