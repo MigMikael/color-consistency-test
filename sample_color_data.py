@@ -6,7 +6,7 @@ from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 import plotly.graph_objs as go
 from random import randint
 
-device = "S8"
+device = "MotoC"
 image_path = "./" + device +"_image/"
 title = device + " color consistency"
 random_color = False
@@ -24,7 +24,7 @@ for filename in os.listdir(choose_img_path):
         #print("shape 0", img.shape[0])
         #print("shape 1", img.shape[1])
 
-        with open("coord.txt") as coord_file:
+        with open(device + "_coord.txt") as coord_file:
             for line in coord_file:
                 num, j, i = line.split(",")
                 j = int(j)
@@ -45,7 +45,7 @@ for filename in os.listdir(choose_img_path):
         count += 1
 
 #print(pixel_list)
-print(len(pixel_list))
+print("Pixel List", len(pixel_list))
 print(count)
 
 pixel_list = np.asarray(pixel_list)
@@ -91,14 +91,14 @@ else:
         "rgb(50, 50, 50)",
     ]
 
-colors *= 24
-print(len(colors))
+colors *= 30
+print("Color List", len(colors))
 
 trace = go.Scatter3d(
     x=r, y=g, z=b,
     mode='markers',
     marker=dict(
-        size=5,
+        size=4,
         color=colors
     )
 )
@@ -147,7 +147,7 @@ layout = go.Layout(
     )
 )
 
-filename = device + "_color_consistency_graph.png"
+filename = device + "_color_consistency_graph"
 data = [trace]
 fig = go.Figure(data=data, layout=layout)
 plotly.offline.plot(fig, filename=filename)
