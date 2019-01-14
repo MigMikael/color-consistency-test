@@ -6,7 +6,7 @@ from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 import plotly.graph_objs as go
 from random import randint
 
-device = "MotoC"
+device = "iPad"
 image_path = "./" + device +"_image/"
 title = device + " color consistency"
 random_color = False
@@ -17,7 +17,7 @@ count = 0
 pixel_list = []
 
 for filename in os.listdir(choose_img_path):
-    if filename.endswith('jpg'):
+    if filename.endswith('jpg') or filename.endswith('JPG'):
         img = cv2.imread(choose_img_path + filename)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         print(filename)
