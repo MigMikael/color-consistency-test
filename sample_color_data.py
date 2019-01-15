@@ -6,7 +6,7 @@ from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 import plotly.graph_objs as go
 from random import randint
 
-device = "iPad"
+device = "S8"
 image_path = "./" + device +"_image/"
 title = device + " color consistency"
 random_color = False
@@ -118,7 +118,7 @@ layout = go.Layout(
             gridcolor='rgb(0, 0, 0)',
             zerolinecolor='rgb(0, 0, 0)',
             showbackground=True,
-            backgroundcolor='rgb(200, 200, 230)'
+            backgroundcolor='#FFCCCC'
         ),
         yaxis=dict(
             range = [0, 256],
@@ -130,7 +130,7 @@ layout = go.Layout(
             gridcolor='rgb(0, 0, 0)',
             zerolinecolor='rgb(0, 0, 0)',
             showbackground=True,
-            backgroundcolor='rgb(200, 200, 230)'
+            backgroundcolor='#CCFFCC'
         ),
         zaxis=dict(
             range = [0, 256],
@@ -142,7 +142,7 @@ layout = go.Layout(
             gridcolor='rgb(0, 0, 0)',
             zerolinecolor='rgb(0, 0, 0)',
             showbackground=True,
-            backgroundcolor='rgb(200, 200, 230)'
+            backgroundcolor='#CCE5FF'
         ),
     )
 )
